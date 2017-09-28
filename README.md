@@ -1,5 +1,35 @@
 # CarND-Path-Planning-Project
 Self-Driving Car Engineer Nanodegree Program
+
+[image1]: ./data/Image1.png "Image1"
+
+## Model documentation  
+
+The goal of this project is to design a path planner that is able to create smooth, safe paths for the car to follow along a 3 lane highway with traffic. A successful path planner will be able to keep inside its lane, avoid hitting other cars, and pass slower moving traffic all by using localization, sensor fusion, and map data.
+
+
+* The car is able to drive at least 4.32 miles without incident. Incidents include exceeding acceleration/jerk/speed, collision, and driving outside of the lanes.
+
+As we can see in the next image the car is able to drive much more than 4.32 miles without incident, dealing with the traffic of a highway.
+
+![alt text][image1]
+
+* The car drives according to the speed limit.
+
+The car doesn't drive faster than the speed limit. As is implemented in lines 461 to 473 of the file main.cpp, car drives always near to the max highway speed unless when a car is driving just in their fron.
+
+* Max Acceleration and Jerk are not Exceeded. (Lines 461 to 473 of the file main.cpp)
+
+Speed of the car is increased and decreased incrementally to avoid exceding max acceleration and Jerk. The key is planning with enough distance to the other cars,
+	
+* Car does not have collisions.
+
+To avoid collisions the position of the other cars in the road is monitored in each cycle. If a car is in the front of our car it adapts it's speed to the front car speed to avoid collision. If is possible the car also change the line to pass it. (Lines 261 to 461 of the file main.cpp)
+
+* The car is able to change lanes and stays in its lane, except for the time between changing lanes.
+	
+When other car is just in the front of our car in the road driving slower, the car moves to an adjacent lane, when this lane is clear of other traffic. It was implemented in the code as a finite state machine, which deal with the car lane position depending on the traffic. (Lines 261 to 461 of the file main.cpp)
+
    
 ### Simulator.
 You can download the Term3 Simulator which contains the Path Planning Project from the [releases tab (https://github.com/udacity/self-driving-car-sim/releases).
