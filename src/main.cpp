@@ -457,63 +457,6 @@ int main() {
                 break;
             }
             ////
-/*
-            //find rev_v to use
-            for(int i = 0; i < sensor_fusion.size(); i++)
-            {
-              //car is in my lane
-              float d = sensor_fusion[i][6];
-              if((d < (2+4*lane+2))&& (d>(2+4*lane-2)))
-              {
-                double vx = sensor_fusion[i][3];
-                double vy = sensor_fusion[i][4];
-                double check_speed = sqrt(vx*vx + vy*vy);
-                double check_car_s = sensor_fusion[i][5];
-                //std::cout << "check_car_s1" << check_car_s << std::endl;
-
-                check_car_s+=((double)prev_size*.02*check_speed);
-                if((check_car_s > car_s)&&((check_car_s-car_s)<30))
-                {
-                  //ref_vel = 29.5;
-                  too_close = true;
-                  ref_vel_max = check_speed * 2.24;
-                  std::cout << "check_speed: " << check_speed*2.24 << std::endl;
-
-                  int current_lane;
-                  if (car_d < 4)
-                  {
-                    std::cout << "linea 1" << std::endl;
-                    current_lane=0;
-                  }
-                  else if ((car_d > 4)&&(car_d < 8))
-                  {
-                    std::cout << "linea 2" << std::endl;
-                    current_lane=1;
-                  }
-                  else if (car_d > 8)
-                  {
-                    std::cout << "linea 3" << std::endl;
-                    current_lane=2;
-                  }
-
-                  if (lane == current_lane)
-                  {
-                    if (lane == 0)
-                    {
-                      lane = 1;
-                    }
-                    else if (lane == 1)
-                    {
-                      lane = 0;
-                    }
-                    else if (lane == 2)
-                    {
-                      lane = 1;
-                    }
-                  }
-                }
-              }
-            }*/
 
             if (too_close)
             {
